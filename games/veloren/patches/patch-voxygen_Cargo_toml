@@ -1,0 +1,35 @@
+Index: voxygen/Cargo.toml
+--- voxygen/Cargo.toml.orig
++++ voxygen/Cargo.toml
+@@ -71,11 +71,11 @@ bytemuck = { version = "1.7", features = ["derive"] }
+ shaderc = "0.10"
+ 
+ # Ui
+-conrod_core = { git = "https://gitlab.com/veloren/conrod.git", branch = "copypasta_0.7" }
++conrod_core = { path = '${WRKDIR}/conrod/conrod_core' }
+ euc = "0.5.3"
+ # We should probably migrate to a more recent version at some point, but this is significant amount of work.
+ # Note: this does not depend on the version of `winit` anymore, all dependent code was moved into Voxygen
+-iced = { package = "iced_native", git = "https://github.com/Imberflur/iced", tag = "veloren-winit-0.28" }
++iced = { package = "iced_native", path = '${WRKDIR}/iced/native' }
+ window_clipboard = "0.5"
+ glyph_brush = "0.7.0"
+ # EGUI
+@@ -112,7 +112,7 @@ dot_vox = "5.1"
+ guillotiere = "0.6.2"
+ hashbrown = { workspace = true }
+ image = { workspace = true, features = ["ico"] }
+-kira = { version = "0.11", default-features = false, features = [
++kira = { path = '${WRKDIR}/kira/crates/kira', default-features = false, features = [
+     "cpal",
+     "symphonia",
+     "ogg",
+@@ -143,7 +143,7 @@ open = "5.3.2"
+ # Discord RPC
+ discord-sdk = { version = "0.4", optional = true }
+ enum-map = { workspace = true }
+-cpal = "0.16.0"
++cpal = { path = '${WRKDIR}/cpal' }
+ 
+ [target.'cfg(target_os = "macos")'.dependencies]
+ dispatch = "0.2"

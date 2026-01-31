@@ -1,0 +1,12 @@
+Index: voxygen/src/main.rs
+--- voxygen/src/main.rs.orig
++++ voxygen/src/main.rs
+@@ -47,7 +47,7 @@ fn main() {
+             cli::Commands::ListWgpuBackends => {
+                 #[cfg(target_os = "windows")]
+                 let backends = &["opengl", "dx12", "vulkan"];
+-                #[cfg(target_os = "linux")]
++                #[cfg(any(target_os = "linux", target_os = "openbsd"))]
+                 let backends = &["opengl", "vulkan"];
+                 #[cfg(target_os = "macos")]
+                 let backends = &["metal"];

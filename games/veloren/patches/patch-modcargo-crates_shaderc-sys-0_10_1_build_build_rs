@@ -1,0 +1,19 @@
+Index: modcargo-crates/shaderc-sys-0.10.1/build/build.rs
+--- modcargo-crates/shaderc-sys-0.10.1/build/build.rs.orig
++++ modcargo-crates/shaderc-sys-0.10.1/build/build.rs
+@@ -288,6 +288,15 @@ fn main() {
+         return;
+     }
+ 
++    // On openbsd we only have shared .so but it looks like this build script
++    // doesn't handle shaderc_shared correctly as it misses spirvtools symbol
++    if (target_os == "openbsd") {
++        println!("cargo:rustc-link-search=native=/usr/local/lib/");
++        println!("cargo:rustc-link-lib=shaderc_shared");
++        println!("cargo:rustc-link-lib=SPIRV-Tools-shared");
++        return;
++    }
++
+     // Canonicalize the search directory first.
+     let search_dir = get_search_dir(&target_os, config_build_from_source).and_then(|search_dir| {
+         let path = Path::new(&search_dir);

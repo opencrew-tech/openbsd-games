@@ -1,0 +1,8 @@
+to run you need VOXYGEN_SCREENSHOT ...
+VOXYGEN_SCREENSHOT=/tmp/ veloren-voxygen
+
+https://wiki.veloren.net/wiki/Hosting_a_Server
+https://book.veloren.net/players/server-hosting/on-your-pc.html
+veloren-server-cli
+If needed open ports in your firewall:
+14004 (TCP)

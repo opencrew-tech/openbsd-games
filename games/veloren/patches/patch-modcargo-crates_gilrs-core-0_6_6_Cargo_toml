@@ -1,0 +1,34 @@
+Index: modcargo-crates/gilrs-core-0.6.6/Cargo.toml
+--- modcargo-crates/gilrs-core-0.6.6/Cargo.toml.orig
++++ modcargo-crates/gilrs-core-0.6.6/Cargo.toml
+@@ -67,17 +67,17 @@ version = "1.0.0"
+ [dev-dependencies.env_logger]
+ version = "0.11.5"
+ 
+-[target.'cfg(any(target_os = "linux", target_os = "dragonfly", target_os = "freebsd"))'.dependencies.inotify]
++[target.'cfg(any(target_os = "linux", target_os = "dragonfly", target_os = "freebsd", target_os = "openbsd"))'.dependencies.inotify]
+ version = "0.11.0"
+ default-features = false
+ 
+-[target.'cfg(any(target_os = "linux", target_os = "dragonfly", target_os = "freebsd"))'.dependencies.libc]
++[target.'cfg(any(target_os = "linux", target_os = "dragonfly", target_os = "freebsd", target_os = "openbsd"))'.dependencies.libc]
+ version = "0.2"
+ 
+-[target.'cfg(any(target_os = "linux", target_os = "dragonfly", target_os = "freebsd"))'.dependencies.libudev-sys]
++[target.'cfg(any(target_os = "linux", target_os = "dragonfly", target_os = "freebsd", target_os = "openbsd"))'.dependencies.libudev-sys]
+ version = "0.1.4"
+ 
+-[target.'cfg(any(target_os = "linux", target_os = "dragonfly", target_os = "freebsd"))'.dependencies.nix]
++[target.'cfg(any(target_os = "linux", target_os = "dragonfly", target_os = "freebsd", target_os = "openbsd"))'.dependencies.nix]
+ version = "0.30.1"
+ features = [
+     "ioctl",
+@@ -85,7 +85,7 @@ features = [
+ ]
+ default-features = false
+ 
+-[target.'cfg(any(target_os = "linux", target_os = "dragonfly", target_os = "freebsd"))'.dependencies.vec_map]
++[target.'cfg(any(target_os = "linux", target_os = "dragonfly", target_os = "freebsd", target_os = "openbsd"))'.dependencies.vec_map]
+ version = "0.8"
+ 
+ [target.'cfg(target_arch = "wasm32")'.dependencies.js-sys]

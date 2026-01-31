@@ -1,0 +1,12 @@
+Index: client/Cargo.toml
+--- client/Cargo.toml.orig
++++ client/Cargo.toml
+@@ -57,7 +57,7 @@ specs = { workspace = true, features = [
+ ] }
+ vek = { workspace = true }
+ hashbrown = { workspace = true }
+-authc = { git = "https://gitlab.com/veloren/auth.git", rev = "ae0e16783a9f9041951296885f082308e155db79" } # xMAC94x/current_master_till_refactored branch
++authc = { path = '${WRKDIR}/authc/authc' } # xMAC94x/current_master_till_refactored branch
+ 
+ #TODO: put bot in a different crate
+ #bot only

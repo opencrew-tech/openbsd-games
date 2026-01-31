@@ -1,0 +1,83 @@
+Index: modcargo-crates/rustix-0.38.44/src/net/sockopt.rs
+--- modcargo-crates/rustix-0.38.44/src/net/sockopt.rs.orig
++++ modcargo-crates/rustix-0.38.44/src/net/sockopt.rs
+@@ -1179,6 +1179,12 @@ pub fn get_tcp_nodelay<Fd: AsFd>(fd: Fd) -> io::Result
+ pub fn set_tcp_keepcnt<Fd: AsFd>(fd: Fd, value: u32) -> io::Result<()> {
+     backend::net::sockopt::set_tcp_keepcnt(fd.as_fd(), value)
+ }
++/// XXX fake set_tcp_keepcnt to please wasmtime-wasi without too much burden
++#[cfg(target_os = "openbsd")]
++#[inline]
++pub fn set_tcp_keepcnt<Fd: AsFd>(fd: Fd, value: u32) -> io::Result<()> {
++    Ok(())
++}
+ 
+ /// `getsockopt(fd, IPPROTO_TCP, TCP_KEEPCNT)`
+ ///
+@@ -1191,6 +1197,13 @@ pub fn set_tcp_keepcnt<Fd: AsFd>(fd: Fd, value: u32) -
+ pub fn get_tcp_keepcnt<Fd: AsFd>(fd: Fd) -> io::Result<u32> {
+     backend::net::sockopt::get_tcp_keepcnt(fd.as_fd())
+ }
++/// XXX fake get_tcp_keepcnt to please wasmtime-wasi without too much burden
++#[cfg(target_os = "openbsd")]
++#[inline]
++pub fn get_tcp_keepcnt<Fd: AsFd>(fd: Fd) -> io::Result<u32> {
++    /// #define TCPTV_KEEPCNT 8
++    Ok(8)
++}
+ 
+ /// `setsockopt(fd, IPPROTO_TCP, TCP_KEEPIDLE, value)`
+ ///
+@@ -1205,6 +1218,12 @@ pub fn get_tcp_keepcnt<Fd: AsFd>(fd: Fd) -> io::Result
+ pub fn set_tcp_keepidle<Fd: AsFd>(fd: Fd, value: Duration) -> io::Result<()> {
+     backend::net::sockopt::set_tcp_keepidle(fd.as_fd(), value)
+ }
++/// XXX fake set_tcp_keepidle to please wasmtime-wasi without too much burden
++#[cfg(target_os = "openbsd")]
++#[inline]
++pub fn set_tcp_keepidle<Fd: AsFd>(fd: Fd, value: Duration) -> io::Result<()> {
++    Ok(())
++}
+ 
+ /// `getsockopt(fd, IPPROTO_TCP, TCP_KEEPIDLE)`
+ ///
+@@ -1219,6 +1238,13 @@ pub fn set_tcp_keepidle<Fd: AsFd>(fd: Fd, value: Durat
+ pub fn get_tcp_keepidle<Fd: AsFd>(fd: Fd) -> io::Result<Duration> {
+     backend::net::sockopt::get_tcp_keepidle(fd.as_fd())
+ }
++/// XXX fake get_tcp_keepidle to please wasmtime-wasi without too much burden
++#[cfg(target_os = "openbsd")]
++#[inline]
++pub fn get_tcp_keepidle<Fd: AsFd>(fd: Fd) -> io::Result<Duration> {
++    let duration = Duration::from_secs(7200);
++    Ok(duration)
++}
+ 
+ /// `setsockopt(fd, IPPROTO_TCP, TCP_KEEPINTVL, value)`
+ ///
+@@ -1231,6 +1257,12 @@ pub fn get_tcp_keepidle<Fd: AsFd>(fd: Fd) -> io::Resul
+ pub fn set_tcp_keepintvl<Fd: AsFd>(fd: Fd, value: Duration) -> io::Result<()> {
+     backend::net::sockopt::set_tcp_keepintvl(fd.as_fd(), value)
+ }
++/// XXX fake set_tcp_keepintvl to please wasmtime-wasi without too much burden
++#[cfg(target_os = "openbsd")]
++#[inline]
++pub fn set_tcp_keepintvl<Fd: AsFd>(fd: Fd, value: Duration) -> io::Result<()> {
++    Ok(())
++}
+ 
+ /// `getsockopt(fd, IPPROTO_TCP, TCP_KEEPINTVL)`
+ ///
+@@ -1242,6 +1274,12 @@ pub fn set_tcp_keepintvl<Fd: AsFd>(fd: Fd, value: Dura
+ #[doc(alias = "TCP_KEEPINTVL")]
+ pub fn get_tcp_keepintvl<Fd: AsFd>(fd: Fd) -> io::Result<Duration> {
+     backend::net::sockopt::get_tcp_keepintvl(fd.as_fd())
++}
++#[cfg(target_os = "openbsd")]
++#[inline]
++pub fn get_tcp_keepintvl<Fd: AsFd>(fd: Fd) -> io::Result<Duration> {
++    let duration = Duration::from_secs(75);
++    Ok(duration)
+ }
+ 
+ /// `setsockopt(fd, IPPROTO_TCP, TCP_USER_TIMEOUT, value)`

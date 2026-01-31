@@ -1,0 +1,24 @@
+Index: Cargo.toml
+--- Cargo.toml.orig
++++ Cargo.toml
+@@ -220,18 +220,8 @@ quinn = { version = "0.11" }
+ 
+ [patch.crates-io]
+ # until next specs release
+-specs = { git = "https://github.com/amethyst/specs.git", rev = "4e2da1df29ee840baa9b936593c45592b7c9ae27" }
+-
+-# # Uncomment this to use a local fork of winit (for testing purposes)
+-# winit = { path = "../winit" }
+-
+-# # Uncomment this to use a local fork of wgpu (for testing purposes)
+-# [patch.'https://github.com/gfx-rs/wgpu']
+-# wgpu-hal = { path = "../wgpu/wgpu-hal" }
+-# wgpu-core = { path = "../wgpu/wgpu-core" }
+-# wgpu-types = { path = "../wgpu/wgpu-types" }
+-# naga = { path = "../wgpu/naga" }
+-
++specs = { path = '${WRKDIR}/specs' }
++cpal = { path = '${WRKDIR}/cpal' }
+ 
+ [workspace.lints.clippy]
+ # This lint is widely considered an annoyance by Veloren developers and doesn't pay its way.

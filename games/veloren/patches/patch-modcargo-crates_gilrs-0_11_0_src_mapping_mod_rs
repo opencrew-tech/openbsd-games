@@ -1,0 +1,20 @@
+Index: modcargo-crates/gilrs-0.11.0/src/mapping/mod.rs
+--- modcargo-crates/gilrs-0.11.0/src/mapping/mod.rs.orig
++++ modcargo-crates/gilrs-0.11.0/src/mapping/mod.rs
+@@ -25,14 +25,14 @@ use vec_map::VecMap;
+ use self::parser::{Error as ParserError, ErrorKind as ParserErrorKind, Parser, Token};
+ 
+ /// Platform name used by SDL mappings
+-#[cfg(any(target_os = "linux", target_os = "dragonfly", target_os = "freebsd"))]
++#[cfg(any(target_os = "linux", target_os = "dragonfly", target_os = "freebsd", target_os = "openbsd"))]
+ const SDL_PLATFORM_NAME: &str = "Linux";
+ #[cfg(target_os = "macos")]
+ const SDL_PLATFORM_NAME: &str = "Mac OS X";
+ #[cfg(target_os = "windows")]
+ const SDL_PLATFORM_NAME: &str = "Windows";
+ #[cfg(all(
+-    not(any(target_os = "linux", target_os = "dragonfly", target_os = "freebsd")),
++    not(any(target_os = "linux", target_os = "dragonfly", target_os = "freebsd", target_os = "openbsd")),
+     not(target_os = "macos"),
+     not(target_os = "windows")
+ ))]

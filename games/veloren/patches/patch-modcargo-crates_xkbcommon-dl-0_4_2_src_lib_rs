@@ -1,0 +1,52 @@
+Index: modcargo-crates/xkbcommon-dl-0.4.2/src/lib.rs
+--- modcargo-crates/xkbcommon-dl-0.4.2/src/lib.rs.orig
++++ modcargo-crates/xkbcommon-dl-0.4.2/src/lib.rs
+@@ -15,6 +15,10 @@ use dlib::dlopen_external_library;
+ use log::info;
+ use once_cell::sync::OnceCell;
+ 
++use std::fs;
++use std::io;
++use std::path::Path;
++
+ #[cfg(feature = "x11")]
+ pub mod x11;
+ 
+@@ -340,16 +344,33 @@ where
+     F: Fn(&str) -> Result<T, dlib::DlError>,
+ {
+     for name in names {
+-        match open(name) {
+-            Ok(l) => return Some(l),
++        let mut soname = String::new();
++        for entry in fs::read_dir("/usr/local/lib").ok()? {
++            let entry = entry.ok()?;
++            let filename = entry.file_name();
++            let filename = filename.to_string_lossy();
++            if filename.starts_with(name) {
++                soname = filename.into_owned();
++                break;
++            }
++        }
++        if soname.is_empty() {
++            info!("Failed loading lib `{}`. Library version not found.", name);
++            continue;
++        }
++        match open(&soname) {
++            Ok(l) => {
++                info!("Loading `{}`.", soname);
++                return Some(l);
++            },
+             Err(e) => {
+                 if let Some(module) = module {
+                     info!(
+                         "Failed loading {} module from `{}`. Error: {:?}",
+-                        module, name, e
++                        module, soname, e
+                     )
+                 } else {
+-                    info!("Failed loading `{}`. Error: {:?}", name, e)
++                    info!("Failed loading `{}`. Error: {:?}", soname, e)
+                 }
+             }
+         }
