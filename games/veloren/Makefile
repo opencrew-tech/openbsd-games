@@ -1,9 +1,10 @@
 # XXX openbsd support to patches
 # gilrs-core
 # rustls-platform-verifier src/tests/verification_real_world/mod.rs ?
+# need VOXYGEN_SCREENSHOT env to start the game
 
 # XXX to improve/upstream
-# cpal, sndio backend, output only
+# cpal, sndio backend
 # wgpu*
 # rustix, tcp primitive
 # shaderc-sys, shaderc_shared support (need SPIRV-Tools-shared)
@@ -15,9 +16,9 @@ COMMENT =	multiplayer voxel RPG written in Rust
 # https://download.veloren.net/version/linux/x86_64/weekly
 
 # make versions
-VELOREN_V =	weekly/2cc17122/1769648660
-VELOREN_H =	2cc1712251e89ef600a489c04eb8b7c6f127b46b
-VELOREN_D =	20260129
+VELOREN_V =	nightly/fd6760d0/1770151738
+VELOREN_H =	fd6760d0628e61127de85e58eecbdb3dbd25a50d
+VELOREN_D =	20260203
 SPECS_ID =	4e2da1df29ee840baa9b936593c45592b7c9ae27
 AUTHC_ID =	ae0e16783a9f9041951296885f082308e155db79
 PORTPICKER_ID =	df6b37872f3586ac3b21d08b56c8ec7cd92fb172
@@ -46,7 +47,7 @@ DIST_TUPLE+=	gitlab veloren conrod ${CONROD_ID} conrod
 DIST_TUPLE+=	github Imberflur iced ${ICED_ID} iced
 
 # add sndio-sys backend to cpal ...
-CPAL_ID =	a022193cc3881bc104b42ad843b179db9c4b14d2
+CPAL_ID =	4d14d64e325adefdc1c62012af027942c09b3eea
 DIST_TUPLE+=	github jarmani cpal ${CPAL_ID} cpal	# Apache-2.0
 # update kira to new cpal version (0.16 -> 0.17)
 KIRA_ID =	849ff39b4191c7538557515b9a33b1729ff684a5
@@ -188,7 +189,7 @@ versions:
 		awk "/$${_conrod_tag}/{print \$$1;exit;}") ;		\
 	printf "ICED_ID =\t%s\n" $$(awk -F '"'				\
 		'/Imberflur\/iced/{print $$6}' voxygen/Cargo.toml) ;	\
-	rm -rf ${_TMP}/veloren-versions
+	cd ${_TMP} && rm -rf ${_TMP}/veloren-versions
 
 # update kira & cpal to use patched dependencies to local path from DIST_TUPLE
 _lock:

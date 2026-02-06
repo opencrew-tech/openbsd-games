@@ -1,0 +1,65 @@
+Index: cpal/src/host/sndio/mod.rs
+--- cpal/src/host/sndio/mod.rs.orig
++++ cpal/src/host/sndio/mod.rs
+@@ -561,7 +561,7 @@ where
+     T: Copy + Default,
+     D: FnMut(&mut Data, &OutputCallbackInfo),
+     E: FnMut(StreamError),
+-    i32: FromSample<T>,
++    I24: FromSample<T>,
+ {
+     let non_native = vec![
+         SampleFormat::F32,
+@@ -571,8 +571,8 @@ where
+     let sample_count = inner.buffer_frames * inner.channels as usize;
+     let mut callback_buffer = vec![T::default(); sample_count];
+     let mut device_buffer = if non_native.contains(&inner.sample_format) {
+-        /* will convert u64 into i32 to keep it simple, shorter */
+-        Some(vec![i32::default(); sample_count])
++        /* convet to native sndio format which is 24 bit lsb aligned */
++        Some(vec![I24::default(); sample_count])
+     } else {
+         None
+     };
+@@ -609,12 +609,12 @@ where
+ 
+         let bytes = if let Some(ref mut dev_buf) = device_buffer {
+             for (dst, src) in dev_buf.iter_mut().zip(callback_buffer.iter()) {
+-                *dst = i32::from_sample(*src);
++                *dst = I24::from_sample(*src);
+             }
+             unsafe {
+                 std::slice::from_raw_parts(
+                     dev_buf.as_ptr() as *const u8,
+-                    dev_buf.len() * std::mem::size_of::<i32>(),
++                    dev_buf.len() * std::mem::size_of::<I24>(),
+                 )
+             }
+         } else {
+@@ -821,22 +821,22 @@ fn sample_format_to_sndio(sample_format: SampleFormat)
+         }),
+         /* non native: encode into i32, must match with output_loop_typed() */
+         SampleFormat::F32 => Some(SampleFormatInfo {
+-            bits: 32,
++            bits: 24,
+             bps: 4,
+             sig: 1,
+         }),
+         SampleFormat::I64 => Some(SampleFormatInfo {
+-            bits: 32,
++            bits: 24,
+             bps: 4,
+             sig: 1,
+         }),
+         SampleFormat::U64 => Some(SampleFormatInfo {
+-            bits: 32,
++            bits: 24,
+             bps: 4,
+             sig: 1,
+         }),
+         SampleFormat::F64 => Some(SampleFormatInfo {
+-            bits: 32,
++            bits: 24,
+             bps: 4,
+             sig: 1,
+         }),

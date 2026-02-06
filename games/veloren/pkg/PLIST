@@ -2,6 +2,7 @@
 @bin bin/veloren-server-cli
 @bin bin/veloren-voxygen
 share/applications/net.veloren.veloren.desktop
+share/doc/pkg-readmes/${PKGSTEM}
 share/metainfo/
 share/metainfo/net.veloren.veloren.metainfo.xml
 share/pixmaps/
