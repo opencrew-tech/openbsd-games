@@ -6058,6 +6058,7 @@ share/veloren/assets/voxygen/i18n/sv/item/common.ftl
 share/veloren/assets/voxygen/i18n/sv/item/items/
 share/veloren/assets/voxygen/i18n/sv/item/items/crafting.ftl
 share/veloren/assets/voxygen/i18n/sv/item/items/food.ftl
+share/veloren/assets/voxygen/i18n/sv/item/items/internal.ftl
 share/veloren/assets/voxygen/i18n/sv/item/items/key.ftl
 share/veloren/assets/voxygen/i18n/sv/item/items/potion.ftl
 share/veloren/assets/voxygen/i18n/sv/item/recipe.ftl
@@ -6167,12 +6168,14 @@ share/veloren/assets/voxygen/i18n/uk/item/common.ftl
 share/veloren/assets/voxygen/i18n/uk/item/items/
 share/veloren/assets/voxygen/i18n/uk/item/items/crafting.ftl
 share/veloren/assets/voxygen/i18n/uk/item/items/food.ftl
+share/veloren/assets/voxygen/i18n/uk/item/items/internal.ftl
 share/veloren/assets/voxygen/i18n/uk/item/items/key.ftl
 share/veloren/assets/voxygen/i18n/uk/item/items/potion.ftl
 share/veloren/assets/voxygen/i18n/uk/item/recipe.ftl
 share/veloren/assets/voxygen/i18n/uk/item/weapon/
 share/veloren/assets/voxygen/i18n/uk/item/weapon/modular.ftl
 share/veloren/assets/voxygen/i18n/uk/item/weapon/musical_instrument.ftl
+share/veloren/assets/voxygen/i18n/uk/item/weapon/primary_component.ftl
 share/veloren/assets/voxygen/i18n/uk/item/weapon/projectile.ftl
 share/veloren/assets/voxygen/i18n/uk/item/weapon/secondary_component.ftl
 share/veloren/assets/voxygen/i18n/uk/item/weapon/tool.ftl

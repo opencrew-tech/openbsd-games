@@ -16,9 +16,9 @@ COMMENT =	multiplayer voxel RPG written in Rust
 # https://download.veloren.net/version/linux/x86_64/weekly
 
 # make versions
-VELOREN_V =	nightly/fd6760d0/1770151738
-VELOREN_H =	fd6760d0628e61127de85e58eecbdb3dbd25a50d
-VELOREN_D =	20260203
+VELOREN_V =	weekly/d82a4a6c/1770841911
+VELOREN_H =	d82a4a6cf1c1ad5afe97f66c5b4eca698567b9e7
+VELOREN_D =	20260211
 SPECS_ID =	4e2da1df29ee840baa9b936593c45592b7c9ae27
 AUTHC_ID =	ae0e16783a9f9041951296885f082308e155db79
 PORTPICKER_ID =	df6b37872f3586ac3b21d08b56c8ec7cd92fb172
@@ -62,7 +62,7 @@ MAINTAINER =	xxx
 # GPL v3+
 PERMIT_PACKAGE =	Yes
 
-WANTLIB += ${MODCARGO_WANTLIB} m shaderc_shared zstd
+WANTLIB += ${MODCARGO_WANTLIB} m shaderc_shared sndio zstd
 
 # xkbcommon_dl use dlopen, keep this extra for pkg tools
 WANTLIB += xkbcommon
