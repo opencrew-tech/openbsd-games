@@ -1,7 +1,8 @@
 # XXX openbsd support to patches
 # gilrs-core
 # rustls-platform-verifier src/tests/verification_real_world/mod.rs ?
-# need VOXYGEN_SCREENSHOT env to start the game
+# make a wraper to start with VOXYGEN_SCREENSHOT
+# if ~/.config/user-dirs.dirs isn't configured properly ?
 
 # XXX to improve/upstream
 # cpal, sndio backend
@@ -14,17 +15,9 @@ COMMENT =	multiplayer voxel RPG written in Rust
 
 # game must stay in sync with weekly build to play online
 # https://download.veloren.net/version/linux/x86_64/weekly
+# run make weekly for automated process
 
-# make versions
-VELOREN_V =	weekly/d82a4a6c/1770841911
-VELOREN_H =	d82a4a6cf1c1ad5afe97f66c5b4eca698567b9e7
-VELOREN_D =	20260211
-SPECS_ID =	4e2da1df29ee840baa9b936593c45592b7c9ae27
-AUTHC_ID =	ae0e16783a9f9041951296885f082308e155db79
-PORTPICKER_ID =	df6b37872f3586ac3b21d08b56c8ec7cd92fb172
-#CONROD_TAG =	copypasta_0.7 # prefer H instead
-CONROD_ID =	c74446362371dc837b8b4b6d6ddcd7693b48d9b6
-ICED_ID =	veloren-winit-0.28
+.include "Makefile.inc"
 
 DISTNAME =	veloren-${VELOREN_H}
 PKGNAME =	veloren-0.18.0pl${VELOREN_D}
@@ -33,7 +26,7 @@ DIST_TUPLE =	gitlab veloren veloren ${VELOREN_H} .
 # veloren git+ depends, NOTE:
 # To avoid build error due to workspace in WRKSRC/Cargo.toml we have to build
 # depends in WRKDIR instead, to handle patches we extract in WRKSRC then link
-# it during post-extract. But we don't need patches atm ...
+# it during post-extract. But we don't need patches for those atm ...
 
 # specs, Entity-Component System written in Rust, Apache-2.0
 # authc, auth server and command-line client for Veloren, GPL v3+
@@ -72,9 +65,6 @@ MODULES =		devel/cargo
 # enable unstable features, see https://gitlab.com/veloren/veloren/-/issues/264
 MODCARGO_ENV+=		RUSTC_BOOTSTRAP=1
 
-# sndio-sys use bindgen which need libclang.so
-MODCARGO_ENV+=		LIBCLANG_PATH=${LOCALBASE}/llvm19/lib/
-
 # same as upstream build
 MODCARGO_NO_DEFAULT_FEATURES = Yes
 MODCARGO_FEATURES =	default-publish
@@ -85,8 +75,6 @@ MODCARGO_CRATES_KEEP =	libsqlite3-sys
 # XXX trigger a rebuild during install, why ?
 MODCARGO_INSTALL_TARGET_PATHS = server-cli voxygen
 
-# sndio-sys use bindgen which need libclang.so, only during build
-BUILD_DEPENDS+=		devel/llvm/19
 # shaderc build using shaderc_shared need sprivtools symbol but doesn't link
 # anythink to SPIRV-Tools-shared (from port-lib-depends-check)
 BUILD_DEPENDS+=		graphics/spirv-tools
@@ -153,7 +141,7 @@ post-install:
 ### targets for port maintainer(s)
 
 _TMP?=		./
-_GEN_VAR?=	BUILD_USER=$$(whoami) WRKOBJDIR=$${t} PATCH_LIST=patch-*_toml
+_GEN_VAR?=	BUILD_USER=$$(whoami) WRKOBJDIR=$${t} PATCH_LIST='patch-*_toml'
 _GEN_DIR?=	$$(realpath `mktemp -d ${_TMP}/veloren.XXXXXXX`)
 
 # Note, to check all git depends are correctly handled, search "git = "
@@ -189,7 +177,7 @@ versions:
 		awk "/$${_conrod_tag}/{print \$$1;exit;}") ;		\
 	printf "ICED_ID =\t%s\n" $$(awk -F '"'				\
 		'/Imberflur\/iced/{print $$6}' voxygen/Cargo.toml) ;	\
-	cd ${_TMP} && rm -rf ${_TMP}/veloren-versions
+	cd - >/dev/null && rm -rf ${_TMP}/veloren-versions
 
 # update kira & cpal to use patched dependencies to local path from DIST_TUPLE
 _lock:
@@ -201,14 +189,27 @@ _lock:
 lock:
 	@t=${_GEN_DIR} && \
 	echo "Veloren: extract in $${t} as $$(whoami)" && \
-	make -D _GEN_LOCK ${_GEN_VAR} patch && \
-	echo "Veloren: gen-modules in $${t} as $$(whoami)" && \
-	make -D _GEN_LOCK ${_GEN_VAR} _lock && \
+	make -D _GEN_LOCK -D _UPDATE ${_GEN_VAR} patch && \
+	echo "Veloren: gen lock in $${t} as $$(whoami)" && \
+	make ${_GEN_VAR} _lock && \
+	echo "Veloren: gen crates in $${t} as $$(whoami)" && \
+	make ${_GEN_VAR} modcargo-gen-crates > crates.inc && \
 	echo "Veloren: rm $${t}..." && \
 	[ -d "$${t}" ] && rm -rf $${t} && \
 	echo "Veloren: rm $${t}, done." || (\
 	echo "Veloren: FAIL, try again with _GEN_DIR=$${t} or rm it" ; \
 	false )
+
+weekly:
+	make versions > Makefile.inc.new && \
+		mv Makefile.inc{.new,}
+	make makesum
+	make lock
+	make makesum
+	make configure
+	make modcargo-gen-crates-licenses > crates.inc.lic && \
+		mv crates.inc{.lic,}
+	make clean
 
 .include "crates.inc"
 

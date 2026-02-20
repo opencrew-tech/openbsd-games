@@ -1,8 +1,15 @@
-to run you need VOXYGEN_SCREENSHOT ...
-VOXYGEN_SCREENSHOT=/tmp/ veloren-voxygen
+In order to run Veloren you need XDG dirs PICTURES configured in your home.
+Alternatively you can run from the console:
+$ VOXYGEN_SCREENSHOT=/tmp/ veloren-voxygen
+
+You can manually configure ~/.config/user-dirs.dirs:
+XDG_PICTURES_DIR="$HOME/Pictures"
+
+Or you can install xdg-user-dirs and run xdg-user-dirs-update:
+$ doas pkg_add xdg-user-dirs
+$ xdg-user-dirs-update
 
 https://wiki.veloren.net/wiki/Hosting_a_Server
 https://book.veloren.net/players/server-hosting/on-your-pc.html
-veloren-server-cli
-If needed open ports in your firewall:
-14004 (TCP)
+If needed open ports in your firewall: 14004 (TCP)
+$ veloren-server-cli
