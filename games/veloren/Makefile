@@ -42,9 +42,6 @@ DIST_TUPLE+=	github Imberflur iced ${ICED_ID} iced
 # add sndio-sys backend to cpal ...
 CPAL_ID =	4d14d64e325adefdc1c62012af027942c09b3eea
 DIST_TUPLE+=	github jarmani cpal ${CPAL_ID} cpal	# Apache-2.0
-# update kira to new cpal version (0.16 -> 0.17)
-KIRA_ID =	849ff39b4191c7538557515b9a33b1729ff684a5
-DIST_TUPLE+=	github tesselode kira ${KIRA_ID} kira	# MIT
 
 CATEGORIES =	games
 
@@ -206,6 +203,7 @@ weekly:
 	make makesum
 	make lock
 	make makesum
+	make clean
 	make configure
 	make modcargo-gen-crates-licenses > crates.inc.lic && \
 		mv crates.inc{.lic,}

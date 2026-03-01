@@ -1,7 +1,6 @@
-Index: voxygen/Cargo.toml
---- voxygen/Cargo.toml.orig
-+++ voxygen/Cargo.toml
-@@ -71,11 +71,11 @@ bytemuck = { version = "1.7", features = ["derive"] }
+--- voxygen/Cargo.toml.orig.port	Thu Feb 26 01:21:41 2026
++++ voxygen/Cargo.toml	Sat Feb 28 16:37:05 2026
+@@ -71,11 +71,11 @@
  shaderc = "0.10"
  
  # Ui
@@ -15,20 +14,11 @@ Index: voxygen/Cargo.toml
  window_clipboard = "0.5"
  glyph_brush = "0.7.0"
  # EGUI
-@@ -112,7 +112,7 @@ dot_vox = "5.1"
- guillotiere = "0.6.2"
- hashbrown = { workspace = true }
- image = { workspace = true, features = ["ico"] }
--kira = { version = "0.11", default-features = false, features = [
-+kira = { path = '${WRKDIR}/kira/crates/kira', default-features = false, features = [
-     "cpal",
-     "symphonia",
-     "ogg",
-@@ -143,7 +143,7 @@ open = "5.3.2"
+@@ -144,7 +144,7 @@
  # Discord RPC
  discord-sdk = { version = "0.4", optional = true }
  enum-map = { workspace = true }
--cpal = "0.16.0"
+-cpal = "0.17"
 +cpal = { path = '${WRKDIR}/cpal' }
  
  [target.'cfg(target_os = "macos")'.dependencies]
