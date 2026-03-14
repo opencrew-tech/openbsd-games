@@ -16,7 +16,6 @@ COMMENT =	multiplayer voxel RPG written in Rust
 # game must stay in sync with weekly build to play online
 # https://download.veloren.net/version/linux/x86_64/weekly
 # run make weekly for automated process
-
 .include "Makefile.inc"
 
 DISTNAME =	veloren-${VELOREN_H}
@@ -90,7 +89,7 @@ MAKE_ENV+=		VELOREN_USERDATA_STRATEGY="system"
 
 CONFIGURE_STYLE =	cargo
 
-# XXX
+# XXX, howto disable symbol without strip (without DEBUG)
 DEBUG_PACKAGES =	${BUILD_PACKAGES}
 
 SUBST_VARS+=		WRKDIR
