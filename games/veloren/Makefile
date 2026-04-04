@@ -175,8 +175,9 @@ versions:
 		'/Imberflur\/iced/{print $$6}' voxygen/Cargo.toml) ;	\
 	cd - >/dev/null && rm -rf ${_TMP}/veloren-versions
 
-# update kira & cpal to use patched dependencies to local path from DIST_TUPLE
 _lock:
+# update kira & cpal to use patched dependencies to local path from DIST_TUPLE
+# need online registry, can't use modcargo default
 	@cd ${WRKSRC} && ${SETENV} ${MAKE_ENV} ${MODCARGO_CARGO_BIN} update \
 		--manifest-path ${MODCARGO_CARGOTOML} \
 		--package kira --package cpal && \

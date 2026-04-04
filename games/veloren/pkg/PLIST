@@ -512,6 +512,8 @@ share/veloren/assets/common/abilities/custom/tursus/
 share/veloren/assets/common/abilities/custom/tursus/tursus_claws.ron
 share/veloren/assets/common/abilities/custom/tursus/tusk_bash_leap.ron
 share/veloren/assets/common/abilities/custom/tursus/tusk_stab.ron
+share/veloren/assets/common/abilities/custom/umber_legoom/
+share/veloren/assets/common/abilities/custom/umber_legoom/doublestrike.ron
 share/veloren/assets/common/abilities/custom/wealdwyvern/
 share/veloren/assets/common/abilities/custom/wealdwyvern/poisonbomb.ron
 share/veloren/assets/common/abilities/custom/wealdwyvern/poisonshockwave.ron
@@ -1021,6 +1023,7 @@ share/veloren/assets/common/entity/wild/aggressive/tarantula.ron
 share/veloren/assets/common/entity/wild/aggressive/tarasque.ron
 share/veloren/assets/common/entity/wild/aggressive/tiger.ron
 share/veloren/assets/common/entity/wild/aggressive/tursus.ron
+share/veloren/assets/common/entity/wild/aggressive/umber_legoom.ron
 share/veloren/assets/common/entity/wild/aggressive/wealdwyvern.ron
 share/veloren/assets/common/entity/wild/aggressive/weevil.ron
 share/veloren/assets/common/entity/wild/aggressive/wendigo.ron
@@ -2396,6 +2399,17 @@ share/veloren/assets/common/items/npc_armor/biped_small/treasure_egg/chest/
 share/veloren/assets/common/items/npc_armor/biped_small/treasure_egg/chest/treasure_egg.ron
 share/veloren/assets/common/items/npc_armor/biped_small/treasure_egg/foot/
 share/veloren/assets/common/items/npc_armor/biped_small/treasure_egg/foot/treasure_egg.ron
+share/veloren/assets/common/items/npc_armor/biped_small/umber_legoom/
+share/veloren/assets/common/items/npc_armor/biped_small/umber_legoom/chest/
+share/veloren/assets/common/items/npc_armor/biped_small/umber_legoom/chest/umber_legoom.ron
+share/veloren/assets/common/items/npc_armor/biped_small/umber_legoom/foot/
+share/veloren/assets/common/items/npc_armor/biped_small/umber_legoom/foot/umber_legoom.ron
+share/veloren/assets/common/items/npc_armor/biped_small/umber_legoom/hand/
+share/veloren/assets/common/items/npc_armor/biped_small/umber_legoom/hand/umber_legoom.ron
+share/veloren/assets/common/items/npc_armor/biped_small/umber_legoom/head/
+share/veloren/assets/common/items/npc_armor/biped_small/umber_legoom/head/umber_legoom.ron
+share/veloren/assets/common/items/npc_armor/biped_small/umber_legoom/pants/
+share/veloren/assets/common/items/npc_armor/biped_small/umber_legoom/pants/umber_legoom.ron
 share/veloren/assets/common/items/npc_armor/bird_large/
 share/veloren/assets/common/items/npc_armor/bird_large/phoenix.ron
 share/veloren/assets/common/items/npc_armor/bird_large/wyvern.ron
@@ -2611,6 +2625,7 @@ share/veloren/assets/common/items/npc_weapons/unique/tornado.ron
 share/veloren/assets/common/items/npc_weapons/unique/treantsapling.ron
 share/veloren/assets/common/items/npc_weapons/unique/turret.ron
 share/veloren/assets/common/items/npc_weapons/unique/tursus_claws.ron
+share/veloren/assets/common/items/npc_weapons/unique/umber_legoom_hook.ron
 share/veloren/assets/common/items/npc_weapons/unique/vampire_bat.ron
 share/veloren/assets/common/items/npc_weapons/unique/wealdwyvern.ron
 share/veloren/assets/common/items/npc_weapons/unique/wendigo_magic.ron
@@ -2858,6 +2873,7 @@ share/veloren/assets/common/loadout/world/legoom/green_legoom.ron
 share/veloren/assets/common/loadout/world/legoom/ochre_legoom.ron
 share/veloren/assets/common/loadout/world/legoom/purple_legoom.ron
 share/veloren/assets/common/loadout/world/legoom/red_legoom.ron
+share/veloren/assets/common/loadout/world/legoom/umber_legoom.ron
 share/veloren/assets/common/loadout/world/traveler0/
 share/veloren/assets/common/loadout/world/traveler0/bronze.ron
 share/veloren/assets/common/loadout/world/traveler0/linen.ron
@@ -5377,6 +5393,7 @@ share/veloren/assets/voxygen/i18n/es/item/common.ftl
 share/veloren/assets/voxygen/i18n/es/item/items/
 share/veloren/assets/voxygen/i18n/es/item/items/crafting.ftl
 share/veloren/assets/voxygen/i18n/es/item/items/food.ftl
+share/veloren/assets/voxygen/i18n/es/item/items/internal.ftl
 share/veloren/assets/voxygen/i18n/es/item/items/key.ftl
 share/veloren/assets/voxygen/i18n/es/item/items/potion.ftl
 share/veloren/assets/voxygen/i18n/es/item/recipe.ftl
@@ -9652,6 +9669,12 @@ share/veloren/assets/voxygen/voxel/npc/tuskram/male/neck.vox
 share/veloren/assets/voxygen/voxel/npc/tuskram/male/tail.vox
 share/veloren/assets/voxygen/voxel/npc/tuskram/male/torso_back.vox
 share/veloren/assets/voxygen/voxel/npc/tuskram/male/torso_front.vox
+share/veloren/assets/voxygen/voxel/npc/umber_legoom/
+share/veloren/assets/voxygen/voxel/npc/umber_legoom/chest.vox
+share/veloren/assets/voxygen/voxel/npc/umber_legoom/foot_r.vox
+share/veloren/assets/voxygen/voxel/npc/umber_legoom/hand_r.vox
+share/veloren/assets/voxygen/voxel/npc/umber_legoom/head.vox
+share/veloren/assets/voxygen/voxel/npc/umber_legoom/pants.vox
 share/veloren/assets/voxygen/voxel/npc/vampire_bat/
 share/veloren/assets/voxygen/voxel/npc/vampire_bat/male/
 share/veloren/assets/voxygen/voxel/npc/vampire_bat/male/chest.vox
@@ -11018,6 +11041,7 @@ share/veloren/assets/voxygen/voxel/weapon/biped_small/misc/magic_shamanic_spirit
 share/veloren/assets/voxygen/voxel/weapon/biped_small/misc/ochre_legoom_spade.vox
 share/veloren/assets/voxygen/voxel/weapon/biped_small/misc/purple_legoom_pitchfork.vox
 share/veloren/assets/voxygen/voxel/weapon/biped_small/misc/red_legoom_hoe.vox
+share/veloren/assets/voxygen/voxel/weapon/biped_small/misc/umber_legoom_hook.vox
 share/veloren/assets/voxygen/voxel/weapon/biped_small/spear/
 share/veloren/assets/voxygen/voxel/weapon/biped_small/spear/guard.vox
 share/veloren/assets/voxygen/voxel/weapon/biped_small/spear/hoplite.vox
