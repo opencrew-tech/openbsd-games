@@ -1033,7 +1033,7 @@ SHA256 (cargo/zune-jpeg-0.5.7.tar.gz) = UdkVcpsOfV/jXC8pTF3BCzAgfMY3kg5bWQd7+j2m
 SHA256 (jarmani-cpal-4d14d64e325adefdc1c62012af027942c09b3eea.tar.gz) = 72vEo4emjLkGos87mn02BYkrHE5g/mRvXM0J+9x5xvE=
 SHA256 (veloren-auth-ae0e16783a9f9041951296885f082308e155db79.tar.gz) = Vzgdl1mX5KC4HjOnZY+HtbMVMJfoKt+/NP2ORwBvIFY=
 SHA256 (veloren-conrod-c74446362371dc837b8b4b6d6ddcd7693b48d9b6.tar.gz) = Q/D6oZbrMzQcjplS2heHZkndOq3kT9NXo6CY6q63jp0=
-SHA256 (veloren-veloren-1c0a37f006e3ba4467feb42073b86a0eedc5ab66.tar.gz) = RrD6s9BCsjPDw+sNoF75/GQis3eg6/a0/zm9MCNGq4k=
+SHA256 (veloren-veloren-d53fd3eced524ad9fbad69657b79cb8c6cf8a141.tar.gz) = HGsQ5TRWQ1C4BHSNjhsp+aEfKMCrJCd0jfeJ0R0EeSY=
 SHA256 (xMAC94x-portpicker-rs-df6b37872f3586ac3b21d08b56c8ec7cd92fb172.tar.gz) = KSUhAeGJu+Bn8LrLoYGBr8aaL7m8Axu7qNy63kXewC8=
 SIZE (Imberflur-iced-veloren-winit-0.28.tar.gz) = 1130634
 SIZE (amethyst-specs-4e2da1df29ee840baa9b936593c45592b7c9ae27.tar.gz) = 142942
@@ -2070,5 +2070,5 @@ SIZE (cargo/zune-jpeg-0.5.7.tar.gz) = 83651
 SIZE (jarmani-cpal-4d14d64e325adefdc1c62012af027942c09b3eea.tar.gz) = 185092
 SIZE (veloren-auth-ae0e16783a9f9041951296885f082308e155db79.tar.gz) = 35502
 SIZE (veloren-conrod-c74446362371dc837b8b4b6d6ddcd7693b48d9b6.tar.gz) = 808402
-SIZE (veloren-veloren-1c0a37f006e3ba4467feb42073b86a0eedc5ab66.tar.gz) = 355268426
+SIZE (veloren-veloren-d53fd3eced524ad9fbad69657b79cb8c6cf8a141.tar.gz) = 355332960
 SIZE (xMAC94x-portpicker-rs-df6b37872f3586ac3b21d08b56c8ec7cd92fb172.tar.gz) = 2210
